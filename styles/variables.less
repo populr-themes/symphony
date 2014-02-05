@@ -1,0 +1,229 @@
+/************************************************************************
+// For extensive details about creating a Populr theme, please visit
+// http://developers.populr.me/theming
+*/
+
+
+// Use this statement to import Google Web Fonts
+// @import '//fonts.googleapis.com/css?family=Open+Sans:300,700spo&.css';
+
+@font-face {
+    font-family: "museo-sans"; 
+    src: url('@{base-url}/fonts/museosans_500-webfont.eot'); 
+    src: url('@{base-url}/fonts/museosans_500-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('@{base-url}/fonts/museosans_500-webfont.woff') format('woff'), 
+    url('@{base-url}/fonts/museosans_500-webfont.ttf') format('truetype'), 
+    url('@{base-url}/fonts/museosans_500-webfont.svg#webfont') format('svg');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "museo-sans"; 
+    src: url("@{base-url}/fonts/museosans_500italic-webfont.eot"); 
+    src: url('@{base-url}/fonts/museosans_500italic-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('@{base-url}/fonts/museosans_500italic-webfont.woff') format('woff'), 
+    url('@{base-url}/fonts/museosans_500italic-webfont.ttf') format('truetype'), 
+    url('@{base-url}/fonts/museosans_500italic-webfont.svg#webfont') format('svg');
+    font-weight: normal;
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: "museo-sans"; 
+    src: url('@{base-url}/fonts/museosans_700-webfont.eot'); 
+    src: url('@{base-url}/fonts/museosans_700-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('@{base-url}/fonts/museosans_700-webfont.woff') format('woff'), 
+    url('@{base-url}/fonts/museosans_700-webfont.ttf') format('truetype'), 
+    url('@{base-url}/fonts/WebFont.svg#webfont') format('svg');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "museo-sans"; 
+    src: url("@{base-url}/fonts/museosans_700italic-webfont.eot"); 
+    src: url('@{base-url}/fonts/museosans_700italic-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('@{base-url}/fonts/museosans_700italic-webfont.woff') format('woff'), 
+    url('@{base-url}/fonts/museosans_700italic-webfont.ttf') format('truetype'), 
+    url('@{base-url}/fonts/museosans_700italic-webfont.svg#webfont') format('svg');
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+
+
+// Use @base-url when specifying relative paths to images, fonts, 
+// and other resources.
+@base-url: '..';
+
+// @background-color holds the default background color for 
+// your pop. You can specify it here, but Populr will override 
+// this value once the user selects a background image for their 
+// pop. Populr automatically calculates the average color of any 
+// background image selected by the user, and stores that average 
+// color in @background-color.
+@background-color: #ccc;
+
+
+/************************************************************************
+// The following values can be edited by Populr's users via dropdown 
+// menus in the pop editor.
+*/
+
+// @headline-font-family is changed with the Font dropdown 
+@headline-font-family: "museo-sans", sans-serif;
+
+// @custom-color is changed with the custome color picker in the Color 
+// dropdown. The color picker will only be available to your users if 
+// you set it up as one of your color palettes. See the Populr themer 
+// documentation for details on how this works:
+// http://developers.populr.me/theming/
+
+@custom-color:@custom-or-default-color;
+
+
+/************************************************************************
+// @populr-theme version
+//
+// When @populr-theme-version is set to 0, the theme rendering engine
+// will use Populr's legacy grid. This is a fast way to get started, 
+// since the legacy grid provides good general-purpose settings. If you 
+// would like to define your own grid, set @populr-theme-version to 1.
+//
+// The value of @populr-theme-version impacts two other things: icons and
+// buttons, both of which can be added to text areas by the end user.
+// If @populr-theme-version is 0, Populr will automatically include 
+// mixins that will style icons and buttons attractively, based off the
+// @custom-color variable.
+// If @populr-theme-version is 1, you will have to manually add 
+// the corresponding mixins to use our styling, or you can style these
+// elements yourself.
+*/
+
+// 0 = Populr legacy grid, and use Populr's default icon & button styling
+// 1 = Define your own grid, style icons & buttons yourself
+@populr-theme-version: 1;
+
+// To use your own grid, edit the following properties as needed.
+
+.columnizer-row-inner {
+  margin: 0 auto;
+  max-width: 950px;
+}
+
+.columnizer-col {
+	float: left;
+	margin: 10px 0 5px 10px;
+
+	.columnizer-cols1 & { width: 950px;}
+	.columnizer-cols2 & {
+            &:first-child { width:630px;}
+            &:last-child { width:310px;}
+        }
+	.columnizer-cols3 & { width: 310px;
+            &:last-child{
+                width:308px;
+                border:1px solid @custom-color;
+            }
+        }
+
+	&:first-child { margin-left: 0; }
+}
+
+// padding-control
+.asset {
+	.columnizer-cols1 & {
+            padding:25px 20px;
+        }
+	
+        .columnizer-cols2 & {
+            padding:20px;
+        }
+	
+        .columnizer-cols3 & {
+             padding:20px;
+        }	
+}
+
+//background-clor & text color control according to different column
+@size-1-bg:#EBEBE9;
+@size-1-text:#000000;
+@size-2-1-bg:#F3F2EA;
+@size-2-1-body:#111;
+@size-2-1-title:#111;
+@size-2-2-bg:@custom-color;
+@size-2-2-inner-bg:#333333;
+@size-2-2-body:#cfcfcf;
+@size-2-2-title:#EAE8D0;
+@size-3-1-body:#121212;
+@size-3-1-title:#F8F5EC;
+@size-3-1-bg:#4C4F54;
+@size-3-2-body:#111111;
+@size-3-2-title:#111111;
+@size-3-2-bg:#BCBDB5;
+@size-3-3-bg:#000000;
+@size-3-3-body:#FFFFFF;
+@size-3-3-title:#FFFFFF;
+
+.my-text-size-color-control(@body-color:#111;@title-color:#111;@bg-color:@size-1-bg;@body-size:14px;@title-size:24px;){
+    background-color:@bg-color;
+    .asset-title {
+        font-size:@title-size;
+        color:@title-color;
+        text-align: center;
+    }
+    .description, .body, .description li, .body li,  {
+        font-size:@body-size;
+        color:@body-color;
+        text-align: center;
+    }
+}
+
+
+
+
+// clearfix for columnizer rows
+
+.columnizer-row:after { display: block; visibility: hidden; height: 0; clear: both; content: ' '; }
+.columnizer-row { *zoom: 1; }
+
+// If you've set @populr-theme-version to 1, we recommend using these mixins.
+#populr > .link-button(@custom-color);
+#populr > .icon(@custom-color);
+
+
+
+@light-alt-custom-color: #fff;
+// set light-alt-custom-color, which is used when a link-button or icon needs to be
+// displayed over an element that uses the custom color as the background color
+// which would make the non-light-alt button / icon hard to see because it uses the
+// custom color
+
+.light-alt-background-color(@color-param) when(luma(@color-param) > 75%) {
+  @light-alt-custom-color: darken(desaturate(@custom-color, 20%), 15%);
+}
+.light-alt-background-color(@color-param) when(luma(@color-param) =< 75%) {
+  @light-alt-custom-color: lighten(saturate(@custom-color, 20%), 15%);
+}
+
+
+@mid-alt-custom-color: #fff;
+.mid-alt-background-color(@color-param) when(luma(@color-param) > 75%) {
+  @mid-alt-custom-color: darken(desaturate(@custom-color, 20%), 15%);
+}
+.mid-alt-background-color(@color-param) when(luma(@color-param) =< 75%) {
+  @mid-alt-custom-color: lighten(saturate(@custom-color, 20%), 15%);
+}
+
+
+@large-alt-custom-color: #fff;
+.large-alt-background-color(@color-param) when(luma(@color-param) > 75%) {
+  @large-alt-custom-color: darken(desaturate(@custom-color, 20%), 15%);
+}
+.large-alt-background-color(@color-param) when(luma(@color-param) =< 75%) {
+  @large-alt-custom-color: lighten(saturate(@custom-color, 20%), 15%);
+}
+// end:set large-alt-custom-color...
+
+.light-alt-background-color(@light-background-color-palette);
+.mid-alt-background-color(@mid-background-color-palette);
+.large-alt-background-color(@large-asset-background);
+

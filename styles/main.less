@@ -1,0 +1,418 @@
+/************************************************************************
+// For extensive details about creating a Populr theme, please visit
+// http://developers.populr.me/theming
+*/
+
+
+// You must import variables.less before importing populr_mixins.less
+
+@import 'palette-custom';
+@import 'palette-Neimar';
+@import 'palette-Messi';
+@import 'palette-Ronaldo';
+@import 'palette-default';
+@import 'variables';
+@import 'http://populr.me/assets/developers/populr_mixins.less';
+@import 'preboot';
+
+
+// Call preboot.less's reset to reduce browser inconsistencies
+#reset > .global-reset();
+
+
+/////////////////////////////////////////////////////////////////////////
+// Typography defaults
+
+@text-color: #111;
+@gray-footer:#2c3437;
+// @custom-color is defined in variables.less
+@link-color: @custom-color;
+
+// Title text defaults
+// @headline-font-family is defined in variables.less
+.headline-text() {
+  font-family: @headline-font-family;
+  font-size: 24px;
+  line-height: 1.33;
+}
+.pop-title-text() {
+  font-family: @headline-font-family;
+  font-size: 56px;
+  line-height: 1.1;
+  color:@link-color;
+}
+
+// Body text defaults
+@body-font-family:"museo-sans", sans-serif;
+
+.body-text() {
+  font-family: @body-font-family;
+  font-size: 14px;
+  line-height: 1.57;
+}
+
+#pop {
+  font-family: @body-font-family;
+  color: @text-color;
+  background-color:#0D171B;
+  i, em { font-style: italic; }
+  b, strong { font-weight: 700; }
+
+  a {
+    color: @link-color;
+    &:active { color: lighten(@link-color, 20%); }
+  }
+}
+
+// End typography defaults
+/////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////
+// Structure
+
+// Content wrapper
+#main-content { margin: 0 auto; }
+//pop background
+
+#my-background{
+    position: relative;
+    max-width:950px;
+    height:235px;
+    margin:0 auto 25px;
+    #pop-links{
+        position: absolute;
+        top:160px;
+        right:40px;
+    }
+}
+
+// header
+#header{
+    position: relative;
+    overflow: hidden;
+    width:100%;
+    padding:0;
+    margin:0;
+    #header-inner{
+        #pattern{
+            height:17px;
+            max-width: 946px;
+            background: url("@{base-url}/images/pattern.png");
+            margin:45px auto 5px;
+        }
+        max-width:950px;
+        margin:0 auto;
+        overflow: hidden;
+        padding:0;
+        #logo-title{
+            width: auto;
+            overflow: hidden;
+            padding:0;
+            #pop-title {
+                position: relative;
+                top:0;
+                width: 700px;
+                display: block;
+                position: relative;
+                float: right;
+                padding:9px 0 0 0;
+                margin: 0;
+            }
+            #pop-logo{
+                overflow: hidden;
+                max-width: 216px;
+                float: left;
+            }
+        }
+    }
+}
+
+//footer
+ #footer{
+    margin-top:18px;
+    height: 150px;
+    background-color: @gray-footer;
+    #footer-inner{
+        max-width:950px;
+        margin:0 auto;
+        padding:15px 0 0 25px;
+        #pop-sharing{
+
+            text-align: left;
+        }
+    }
+}
+//button
+
+.link-btn{
+    .border-radius(5px)!important;
+    .box-shadow(0 6px 1px darken(@custom-color,9%))!important;
+    font-size:16px!important;
+    &:hover{
+        .box-shadow(0 5px 1px darken(@custom-color,3%))!important;
+    }
+}
+
+// Logo helper
+#pop-logo { margin: 20px auto; }
+
+// Pop title
+#pop-title {
+  max-width: 960px;
+  padding: 0 20px;
+  margin: 50px auto;
+
+  .pop-title-text();
+  text-align: center;
+}
+
+.columnizer-col {
+  background-color: #bbb;
+}
+
+// Assets
+.asset-title {
+  .headline-text();
+  margin: 10px 0;
+}
+
+.description, .body {
+  .body-text();
+
+  margin: 10px 0;
+  ul, ol { margin: .5em 0 .5em 1.5em; }
+  ul li { list-style-type: disc; }
+  ol li { list-style-type: decimal; }
+}
+
+// Text asset styling
+.asset-type-text.asset-size-1 {
+  .asset-title {
+    font-size: 27px;
+    text-align: center;
+  }
+  .description, .body, .description li, .body li,  {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
+// Image asset styling
+.my-lightbox-parent{
+    .populr-image-slider{
+        z-index:15;
+    }
+    overflow: hidden;
+    position: relative;
+    .my-center{
+        position: absolute;
+        display: table;
+        width:100%;
+        margin-top: -30px ;
+        padding:0;
+        top:50%;
+        left:0;
+        text-align: center;
+        z-index:10;
+        span{
+            padding:20px;
+            height:20px;
+            width:20px;
+            .opacity(0);
+            display: inline-block;
+            .border-radius(100%);
+            background-color:@link-color;
+            .icon{
+                position: relative;
+                top: -2px;
+                left: 1px;
+                text-align: center;
+                color: white;
+                font-size:25px;
+                font-style: normal!important;
+
+            }
+        }
+    }
+    &:hover .populr-image-slider{.opacity(30)}
+    &:hover span{.opacity(70)}
+}
+#populr > #image-slider-themes > .basic();
+
+// cols2 small and big image
+.columnizer-col2.first .asset-type-imagegroup{
+    .size-2-small{display:none;}
+}
+
+
+.columnizer-col2:last-child{
+    .asset-type-imagegroup{
+        .size-2-big{display:none;}
+    }
+}
+
+// Document asset styling
+#doc-title{
+    display: table-cell;
+    line-height: 1.4;
+    text-align: left;
+    vertical-align: middle;
+    height:43px;
+    padding-right:10px;
+    color: black!important;
+    font-size:14px;
+    text-transform: capitalize;
+    font-family:@body-font-family;
+    max-width:227px;
+}
+.documents {
+  margin: 0 auto;
+  li {
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      line-height: 1.2;
+      overflow: hidden;
+      varticle-align: middle;
+      .download-button{
+        border:0;
+        margin-bottom:8px;
+        min-width:135px!important;
+        float: left;
+        margin: 0 10px 8px 0;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        text-decoration: none;
+        font-style: normal;
+        cursor: pointer;
+        display: inline-block!important;
+        position: relative;
+        height: 40px;
+        line-height:1;
+        padding: 0 15px!important;
+        vertical-align: baseline;
+        text-shadow: none!important;
+        font-family:@body-font-family;
+        font-size:14px;
+        font-weight:400;
+        &:hover{i.icon{color:rgba(255, 255, 255, 1);}}
+      }
+      i.icon { 
+        font-style: normal!important; text-align: center; vertical-align: middle;
+        font-size: 18px; margin-right:8px;position: relative; top:-1px; color: rgba(255, 255, 255, 0.5);
+        .transition(color 0.5s ease);
+      }
+    }
+  }
+}
+
+//embed-styling
+.asset-type-embedgroup.asset-size-1 .embed { height: 473px; }
+.asset-type-embedgroup.asset-size-2 .embed { height: 250px; }
+.asset-type-embedgroup.asset-size-3 .embed { height: 250px; }
+
+.embed{
+    margin-bottom:15px;
+    .embedded-object{height:100%!important;}
+}
+//text-styling, (all variables & .my-text-size-color-control() in variable.less )
+.columnizer-col {
+        
+	.columnizer-cols1 & {
+            .my-text-size-color-control(@body-color:#000;@title-color:#000;@bg-color:@size-1-bg;@body-size:15px;@title-size:27px;);
+        }
+	.columnizer-cols2 & {
+            &:first-child {
+                .my-text-size-color-control(@body-color:@size-2-1-body;@title-color:@size-2-1-title;@bg-color:@size-2-1-bg;@body-size:14px;@title-size:24px;);
+            }
+            &:last-child {
+                 .my-text-size-color-control(@body-color:@size-2-2-body;@title-color:@size-2-2-title;@bg-color:@size-2-2-bg;@body-size:14px;@title-size:24px;);
+                 .description, .body{
+                    background-color:@size-2-2-inner-bg;
+                    padding:10px 5px;
+                    .border-radius(4px);
+                    border:1px solid #444;
+                 }
+                 .asset-title {
+                    padding:0 5px;
+                 }
+                 .asset{
+                    padding:20px 15px;
+                 }
+            }
+        }
+
+	.columnizer-cols3 & {
+            
+            &:first-child {
+                .my-text-size-color-control(@body-color:@size-3-1-body;@title-color:@size-3-1-title;@bg-color:@size-3-1-bg;@body-size:17px;@title-size:42px;);
+            }
+            //by-default its second child
+            .my-text-size-color-control(@body-color:@size-3-2-body;@title-color:@size-3-2-title;@bg-color:@size-3-2-bg;@body-size:14px;@title-size:24px;);
+            
+            &:last-child {
+                 .my-text-size-color-control(@body-color:@size-3-3-body;@title-color:@size-3-3-title;@bg-color:@size-3-3-bg;@body-size:14px;@title-size:24px;);
+                 .asset{padding: 19px 20px;}
+            }
+        }
+	
+}
+
+
+
+
+// Clearfix
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+// End structure
+/////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////
+// Mobile
+//
+// The Populr mobile reset will handle some of the basics of mobilizing 
+// your theme, such as stacking all of the assets vertically and scaling 
+// them to 100% of the width of their container. However, you'll have to 
+// fine tune the styling to make your theme look really good on mobile
+// devices.
+
+@media screen and (max-width: 960px) {
+  #populr > .mobile-reset();
+
+  // Edit the grid for mobile
+  .columnizer-row-inner, #pop-title,#foter-inner,#header-inner { max-width: 640px!important; }
+  #my-background{max-width:630px!important;}
+  #pattern{ max-width: 617px!important;margin-bottom:10px!important;}
+  .columnizer-col { margin: 0 10px 20px !important; }
+  #pop-logo{float:none!important;margin:15px 0!important;}
+  #pop-title{float:none!important;margin:0 20px 15px!important;}
+
+  // Edit the typography for mobile
+  #pop-title { font-size: 40px !important; }
+  .asset-title { font-size: 24px !important; }
+  .description, .body, .description li, .body li { font-size: 14px !important; }
+  .asset-title, .description, .body, .description li, .body li { text-align: left !important; }
+}
+
+@media screen and (max-width: 600px) {
+  #my-background,#foter-inner,#header-inner,#pattern {width:auto; margin: 0 10px 20px !important; }
+  #pattern { margin-bottom:0!important; }
+  #header-inner{margin-bottom:10px!important;}
+  #pop-title { font-size: 32px !important; }
+  .asset-title { font-size: 20px !important; }
+}
