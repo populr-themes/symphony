@@ -7,9 +7,7 @@
 // You must import variables.less before importing populr_mixins.less
 
 @import 'palette-custom';
-@import 'palette-Neimar';
-@import 'palette-Messi';
-@import 'palette-Ronaldo';
+@import 'palette-light';
 @import 'palette-default';
 @import 'variables';
 @import 'http://populr.me/assets/developers/populr_mixins.less';
@@ -260,7 +258,7 @@
     vertical-align: middle;
     height:43px;
     padding-right:10px;
-    color: black!important;
+    color: black;
     font-size:14px;
     text-transform: capitalize;
     font-family:@body-font-family;
@@ -407,6 +405,12 @@
   .asset-title { font-size: 24px !important; }
   .description, .body, .description li, .body li { font-size: 14px !important; }
   .asset-title, .description, .body, .description li, .body li { text-align: left !important; }
+  //equla height fixed for mobile
+  .columnizer-row-inner .columnizer-col {
+   padding-bottom:0;
+   margin-bottom:20px;
+}
+
 }
 
 @media screen and (max-width: 600px) {

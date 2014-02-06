@@ -77,8 +77,8 @@
 // documentation for details on how this works:
 // http://developers.populr.me/theming/
 
-@custom-color:@custom-or-default-color;
-
+@custom-color: @custom-or-default-color;
+@custom-color-bg: @pallete-darker-custom-color-bg;
 
 /************************************************************************
 // @populr-theme version
@@ -111,21 +111,16 @@
 
 .columnizer-col {
 	float: left;
-	margin: 10px 0 5px 10px;
+	margin: 10px 10px 5px 0;
 
 	.columnizer-cols1 & { width: 950px;}
 	.columnizer-cols2 & {
             &:first-child { width:630px;}
             &:last-child { width:310px;}
         }
-	.columnizer-cols3 & { width: 310px;
-            &:last-child{
-                width:308px;
-                border:1px solid @custom-color;
-            }
-        }
+	.columnizer-cols3 & { width: 310px;}
 
-	&:first-child { margin-left: 0; }
+	&:last-child { margin-right: 0; }
 }
 
 // padding-control
@@ -143,25 +138,6 @@
         }	
 }
 
-//background-clor & text color control according to different column
-@size-1-bg:#EBEBE9;
-@size-1-text:#000000;
-@size-2-1-bg:#F3F2EA;
-@size-2-1-body:#111;
-@size-2-1-title:#111;
-@size-2-2-bg:@custom-color;
-@size-2-2-inner-bg:#333333;
-@size-2-2-body:#cfcfcf;
-@size-2-2-title:#EAE8D0;
-@size-3-1-body:#121212;
-@size-3-1-title:#F8F5EC;
-@size-3-1-bg:#4C4F54;
-@size-3-2-body:#111111;
-@size-3-2-title:#111111;
-@size-3-2-bg:#BCBDB5;
-@size-3-3-bg:#000000;
-@size-3-3-body:#FFFFFF;
-@size-3-3-title:#FFFFFF;
 
 .my-text-size-color-control(@body-color:#111;@title-color:#111;@bg-color:@size-1-bg;@body-size:14px;@title-size:24px;){
     background-color:@bg-color;
@@ -177,8 +153,17 @@
     }
 }
 
+// equal height column works well, without border bottom 
 
-
+.columnizer-row-inner {
+   overflow: hidden;
+   clear:    both;
+}
+.columnizer-row-inner .columnizer-col {
+   float: left;
+   padding-bottom: 100000px;
+   margin-bottom:  -100000px;
+}
 
 // clearfix for columnizer rows
 
@@ -190,4 +175,10 @@
 #populr > .icon(@custom-color);
 
 
+//i do not if this work, I was thinking that, If the luma of these two colors are close i just wanted to darken the darker one.
+.check-if-color-fits (@custom-color,@custom-color-bg) when ((luma(@custom-color-bg) - luma(@custom-color)) < 20) {
+     @custom-color-bg: darken(desaturate(@custom-color,10%), 15%);
+}
+
+.check-if-color-fits (@custom-color,@custom-color-bg);
 

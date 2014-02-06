@@ -1,0 +1,23 @@
+@custom-or-default-color:#EAE2F3;
+@pallete-darker-custom-color-bg: darken(@custom-or-default-color, 3%);
+
+
+//background-clor & text color control according to different column
+@size-1-bg:spin(#EBEBE9, 180);
+@size-1-text:spin(#000000, 180);
+@size-2-1-bg:spin(#F3F2EA, 180);
+@size-2-1-body:spin(#111, 180);
+@size-2-1-title:spin(#111, 180);
+@size-2-2-bg:spin(@pallete-darker-custom-color-bg, 180);
+@size-2-2-inner-bg:spin(#333333, 180);
+@size-2-2-body:spin(#cfcfcf, 180);
+@size-2-2-title:spin(#EAE8D0, 180);
+@size-3-1-body:spin(#121212, 180);
+@size-3-1-title:spin(#F8F5EC, 180);
+@size-3-1-bg:spin(#4C4F54, 180);
+@size-3-2-body:spin(#111111, 180);
+@size-3-2-title:spin(#111111, 180);
+@size-3-2-bg:spin(#BCBDB5, 180);
+@size-3-3-bg:spin(lighten(desaturate(mix(@custom-or-default-color,#000,10%), 80%),8%), 180);
+@size-3-3-body:spin(darken(desaturate(mix(@custom-or-default-color,#FFF,10%), 80%),8%), 180);
+@size-3-3-title:spin(darken(desaturate(mix(@custom-or-default-color,#FFF,10%), 80%),8%), 180);
