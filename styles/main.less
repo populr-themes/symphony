@@ -24,7 +24,7 @@
 @text-color: #111;
 @gray-footer:#2c3437;
 // @custom-color is defined in variables.less
-@link-color: @custom-color;
+@link-color: darken(@custom-color,10%);
 
 // Title text defaults
 // @headline-font-family is defined in variables.less
@@ -58,6 +58,7 @@
 
   a {
     color: @link-color;
+    &:hover{ text-decoration: none; color: darken(@link-color,5%)}
     &:active { color: lighten(@link-color, 20%); }
   }
 }
@@ -94,7 +95,7 @@
     margin:0;
     #header-inner{
         #pattern{
-            height:17px;
+            height:30px;
             max-width: 946px;
             background: url("@{base-url}/images/pattern.png");
             margin:45px auto 5px;
@@ -136,8 +137,7 @@
         margin:0 auto;
         padding:15px 0 0 25px;
         #pop-sharing{
-
-            text-align: left;
+            text-align: center;
         }
     }
 }
@@ -355,7 +355,6 @@
             
             &:last-child {
                  .my-text-size-color-control(@body-color:@size-3-3-body;@title-color:@size-3-3-title;@bg-color:@size-3-3-bg;@body-size:14px;@title-size:24px;);
-                 .asset{padding: 19px 20px;}
             }
         }
 	
