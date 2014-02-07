@@ -22,9 +22,8 @@
 // Typography defaults
 
 @text-color: #111;
-@gray-footer:#2c3437;
 // @custom-color is defined in variables.less
-@link-color: darken(@custom-color,10%);
+@link-color: darken(@custom-color,5%);
 
 // Title text defaults
 // @headline-font-family is defined in variables.less
@@ -52,7 +51,7 @@
 #pop {
   font-family: @body-font-family;
   color: @text-color;
-  background-color:#0D171B;
+  background-color:@pop-bg-color;
   i, em { font-style: italic; }
   b, strong { font-weight: 700; }
 
@@ -96,8 +95,8 @@
     #header-inner{
         #pattern{
             height:30px;
-            max-width: 946px;
-            background: url("@{base-url}/images/pattern.png");
+            max-width: 929px;
+            background: @pattern-background;
             margin:45px auto 5px;
         }
         max-width:950px;
@@ -131,7 +130,7 @@
  #footer{
     margin-top:18px;
     height: 150px;
-    background-color: @gray-footer;
+    background-color: @footer-color;
     #footer-inner{
         max-width:950px;
         margin:0 auto;
@@ -333,8 +332,8 @@
                  .description, .body{
                     background-color:@size-2-2-inner-bg;
                     padding:10px 5px;
-                    .border-radius(4px);
-                    border:1px solid #444;
+                    .border-radius(@size-2-2-b-radius);
+                    border:@size-2-2-inner-border solid #444;
                  }
                  .asset-title {
                     padding:0 5px;
@@ -394,7 +393,7 @@
   // Edit the grid for mobile
   .columnizer-row-inner, #pop-title,#foter-inner,#header-inner { max-width: 640px!important; }
   #my-background{max-width:630px!important;}
-  #pattern{ max-width: 617px!important;margin-bottom:10px!important;}
+  #pattern{ max-width: 610px!important;margin-bottom:10px!important;}
   .columnizer-col { margin: 0 10px 20px !important; }
   #pop-logo{float:none!important;margin:15px auto!important;}
   #pop-title{float:none!important;margin:0 20px 15px!important;}
