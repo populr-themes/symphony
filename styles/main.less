@@ -34,8 +34,8 @@
 }
 .pop-title-text() {
   font-family: @headline-font-family;
-  font-size: 56px;
-  line-height: 1.1;
+  font-size: 25px;
+  line-height: 3;
   color:@link-color;
 }
 
@@ -44,7 +44,7 @@
 
 .body-text() {
   font-family: @body-font-family;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.57;
 }
 
@@ -70,40 +70,36 @@
 // Structure
 
 // Content wrapper
-#main-content { margin: 0 auto; }
-//pop background
 
-#my-background{
-    position: relative;
-    max-width:950px;
-    height:235px;
-    margin:0 auto 25px;
-    #pop-links{
-        position: absolute;
-        top:160px;
-        right:40px;
-    }
+body { background: @footer-color; }
+
+#main-content {
+  margin: 0 auto;
 }
 
-// header
-
-#pattern{
-    height:30px;
-    max-width: 929px;
-    background: @pattern-background;
-    margin:45px auto 5px;
-}
-#populr > .inline-logo-title();
-#inline-logo-title{
-    max-width:950px;
-    margin:0 auto;
+#main-region {
+  min-height: 80px;
+  padding-bottom: 30px;
 }
 
+.fullbg-container { position: relative; }
+
+#my-background:before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 125px;
+  background: url('@{base-url}/images/banner3.png')
+ }
 
 //footer
  #footer{
-    margin-top:18px;
-    height: 150px;
+    // margin-top:18px;
+    height: 50px;
     background-color: @footer-color;
     #footer-inner{
         max-width:950px;
@@ -114,6 +110,50 @@
         }
     }
 }
+
+//pop background
+#my-background{
+    position: relative;
+    max-width:950px;
+    height:235px;
+    margin:0 auto 25px;
+    #pop-links{
+        position: absolute;
+        top:140px;
+        right:40px;
+    }
+}
+
+// header
+
+#pattern{
+    // height:33px;
+    max-width: 950px;
+    // background: @pattern-background;
+    // opacity: .2;
+    position: relative;
+    border-top: 1px solid @size-3-1-bg;
+    margin: 25px auto 10px;
+}
+#pattern:after {
+  border-top: 4px solid @size-3-1-bg;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+#populr > .inline-logo-title();
+#inline-logo-title{
+    max-width:950px;
+    margin:0 auto;
+}
+
+
 //button
 
 .link-btn{
@@ -138,13 +178,13 @@
 }
 
 .columnizer-col {
-  background-color: #bbb;
+  background-color: #bcbdb5;
 }
 
 // Assets
 .asset-title {
   .headline-text();
-  margin: 10px 0;
+  text-transform: uppercase;
 }
 
 .description, .body {
@@ -157,18 +197,12 @@
 }
 
 // Text asset styling
-.asset-type-text.asset-size-1 {
-  .asset-title {
-    font-size: 27px;
-    text-align: center;
-  }
-  .description, .body, .description li, .body li,  {
-    font-size: 15px;
-    text-align: center;
-  }
+.columnizer-col2:first-child {
+  .asset-title { border-bottom: 5px solid #b53d3c; }
 }
 
 // Image asset styling
+.populr-image-slider { margin-bottom: 20px; }
 .my-lightbox-parent{
     .populr-image-slider{
         z-index:15;
@@ -230,14 +264,14 @@
     vertical-align: middle;
     height:43px;
     padding-right:10px;
-    color: black;
+    color: #cfcfcf;
     font-size:14px;
     text-transform: capitalize;
     font-family:@body-font-family;
     max-width:227px;
 }
 .documents {
-  margin: 0 auto;
+  margin: 20px auto;
   li {
     margin-bottom: 5px;
     display: block;
@@ -255,7 +289,6 @@
         float: left;
         margin: 0 10px 8px 0;
         color: #fff;
-        font-size: 13px;
         text-align: center;
         text-decoration: none;
         font-style: normal;
@@ -268,7 +301,6 @@
         vertical-align: baseline;
         text-shadow: none!important;
         font-family:@body-font-family;
-        font-size:14px;
         font-weight:400;
         &:hover{i.icon{color:rgba(255, 255, 255, 1);}}
       }
@@ -294,8 +326,11 @@
 .columnizer-col {
         
 	.columnizer-cols1 & {
-            .my-text-size-color-control(@body-color:#000;@title-color:#000;@bg-color:@size-1-bg;@body-size:15px;@title-size:27px;);
-        }
+    .body, .description {
+      border-top: 5px double #eae8da;
+      padding:10px;
+    }
+  }
 	.columnizer-cols2 & {
             &:first-child {
                 .my-text-size-color-control(@body-color:@size-2-1-body;@title-color:@size-2-1-title;@bg-color:@size-2-1-bg;@body-size:14px;@title-size:24px;);
@@ -304,9 +339,7 @@
                  .my-text-size-color-control(@body-color:@size-2-2-body;@title-color:@size-2-2-title;@bg-color:@size-2-2-bg;@body-size:14px;@title-size:24px;);
                  .description, .body{
                     background-color:@size-2-2-inner-bg;
-                    padding:10px 5px;
-                    .border-radius(@size-2-2-b-radius);
-                    border:@size-2-2-inner-border solid #444;
+                    padding:10px;
                  }
                  .asset-title {
                     padding:0 5px;
@@ -320,7 +353,8 @@
 	.columnizer-cols3 & {
             
             &:first-child {
-                .my-text-size-color-control(@body-color:@size-3-1-body;@title-color:@size-3-1-title;@bg-color:@size-3-1-bg;@body-size:17px;@title-size:42px;);
+                // .my-text-size-color-control(@body-color:@size-3-1-body;@title-color:@size-3-1-title;@bg-color:@size-3-1-bg;@body-size:17px;@title-size:42px;);
+                background-color:@size-1-bg;
             }
             //by-default its second child
             .my-text-size-color-control(@body-color:@size-3-2-body;@title-color:@size-3-2-title;@bg-color:@size-3-2-bg;@body-size:14px;@title-size:24px;);
@@ -372,7 +406,6 @@
   #pop-title{float:none!important;margin:0 20px 15px!important;}
 
   // Edit the typography for mobile
-  #pop-title { font-size: 40px !important; }
   .asset-title { font-size: 24px !important; }
   .description, .body, .description li, .body li { font-size: 14px !important; }
   .asset-title, .description, .body, .description li, .body li { text-align: left !important; }
